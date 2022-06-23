@@ -47,7 +47,7 @@ private fun TestedExtension.defaultSetup() {
     }
 }
 
-private fun TestedExtension.projectCompileOptions() {
+fun TestedExtension.projectCompileOptions() {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

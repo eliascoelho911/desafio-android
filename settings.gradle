@@ -1,2 +1,4 @@
 include ':app'
 include ':contacts'
+include ':designsystem'
+include ':commons'
