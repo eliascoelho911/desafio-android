@@ -25,16 +25,6 @@ object Dependencies {
         const val android = "io.insert-koin:koin-android:${Versions.Koin.koin}"
     }
 
-    object Dagger {
-        const val dagger = "com.google.dagger:dagger:${Versions.Dagger.dagger}"
-        const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.Dagger.dagger}"
-    }
-
-    object RxJava2 {
-        const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.RxJava2.rxjava}"
-        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.RxJava2.rxandroid}"
-    }
-
     object Google {
         const val gson = "com.google.code.gson:gson:${Versions.Google.gson}"
     }

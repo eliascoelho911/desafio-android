@@ -37,22 +37,8 @@ object Versions {
         const val junit = "4.12"
     }
 
-    object Mockito {
-        const val mockito = "2.27.0"
-        const val mockitoKotlin = "2.1.0"
-    }
-
     object Koin {
         const val koin = "3.2.0"
-    }
-
-    object Dagger {
-        const val dagger = "2.23.2"
-    }
-
-    object RxJava2 {
-        const val rxjava = "2.2.17"
-        const val rxandroid = "2.1.1"
     }
 
     object Gradle {

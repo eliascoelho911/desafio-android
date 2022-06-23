@@ -8,11 +8,6 @@ object TestDependencies {
         const val junit = "junit:junit:${Versions.JUnit.junit}"
     }
 
-    object Mockito {
-        const val mockito = "org.mockito:mockito-core:${Versions.Mockito.mockito}"
-        const val mockitoKotlin2 = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.Mockito.mockitoKotlin}"
-    }
-
     object Android {
         const val coreTesting = "androidx.arch.core:core-testing:${Versions.Android.coreTesting}"
         const val runner = "androidx.test:runner:${Versions.Android.testRunner}"
