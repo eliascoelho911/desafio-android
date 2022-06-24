@@ -15,6 +15,8 @@ object Versions {
         const val espresso = "3.1.1"
         const val lifecycle = "2.2.0"
         const val coreKtxTest = "1.2.0"
+        const val navigation = "2.4.2"
+        const val fragmentKtx = "1.4.1"
     }
 
     object Retrofit2 {

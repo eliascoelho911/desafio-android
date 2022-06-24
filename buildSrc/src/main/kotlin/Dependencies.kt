@@ -10,6 +10,7 @@ object Dependencies {
     object Android {
         const val coreKtx = "androidx.core:core-ktx:${Versions.Android.coreKtx}"
         const val appCompat = "androidx.appcompat:appcompat:$${Versions.Android.appCompat}"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Android.fragmentKtx}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Versions.Android.constraintLayout}"
         const val material = "com.google.android.material:material:${Versions.Android.material}"
@@ -19,6 +20,7 @@ object Dependencies {
             "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.lifecycle}"
         const val lifecycleRuntimeKtx =
             "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Android.lifecycle}"
+        const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.Android.navigation}"
     }
 
     object Koin {
