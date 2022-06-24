@@ -1,11 +1,11 @@
 package com.picpay.desafio.android.contacts.data.converters
 
-import com.picpay.desafio.android.contacts.data.dtos.UserDTO
-import com.picpay.desafio.android.contacts.domain.entities.User
+import com.picpay.desafio.android.contacts.data.dtos.ContactDTO
+import com.picpay.desafio.android.contacts.domain.entities.Contacts
 
-fun UserDTO.toEntity() = User(
-    img = img,
-    name = name,
+internal fun ContactDTO.toEntity() = Contacts(
+    imgUrl = imgUrl,
+    fullName = fullName,
     id = id,
     username = username
 )

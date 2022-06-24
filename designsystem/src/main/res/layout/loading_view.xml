@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:parentTag="android.widget.FrameLayout">
+
+    <com.picpay.desafio.android.designsystem.components.ShimmerFrameLayout
+            android:layout_width="@dimen/size_48"
+            android:layout_height="@dimen/size_48"
+            android:layout_gravity="center"
+            app:shimmer_auto_start="true"
+            app:shimmer_duration="1000">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_picpay_logo"
+                android:scaleType="fitCenter" />
+
+    </com.picpay.desafio.android.designsystem.components.ShimmerFrameLayout>
+</merge>

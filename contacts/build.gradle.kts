@@ -1,5 +1,3 @@
-import com.android.build.gradle.LibraryExtension
-
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -17,4 +15,6 @@ dependencies {
     implementation(Dependencies.Android.constraintLayout)
     implementation(Dependencies.Android.material)
     implementation(Dependencies.Android.navigation)
+    implementation(Dependencies.Android.lifecycleRuntimeKtx)
+    implementation(Dependencies.Koin.android)
 }

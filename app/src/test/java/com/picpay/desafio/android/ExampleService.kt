@@ -7,7 +7,7 @@ class ExampleService(
 ) {
 
     fun example(): List<com.picpay.desafio.android.contacts.domain.repositories.entities.User> {
-        val users = service.getUsers().execute()
+        val users = service.getAllContacts().execute()
 
         return users.body() ?: emptyList()
     }

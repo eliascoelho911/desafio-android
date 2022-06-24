@@ -23,6 +23,10 @@ object Dependencies {
         const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.Android.navigation}"
     }
 
+    object Facebook {
+        const val shimmer = "com.facebook.shimmer:shimmer:${Versions.Facebook.shimmer}"
+    }
+
     object Koin {
         const val android = "io.insert-koin:koin-android:${Versions.Koin.koin}"
         const val core = "io.insert-koin:koin-core:${Versions.Koin.koin}"

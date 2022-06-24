@@ -11,4 +11,5 @@ android {
 
 dependencies {
     implementation(Dependencies.Android.material)
+    implementation(Dependencies.Facebook.shimmer)
 }
