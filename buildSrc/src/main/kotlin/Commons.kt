@@ -4,7 +4,7 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.JavaVersion
 
 fun BaseAppModuleExtension.appSetup() {
-    defaultSetup()
+    projectDefaultConfig()
 
     defaultConfig {
         applicationId = "com.picpay.desafio.android"
@@ -12,29 +12,21 @@ fun BaseAppModuleExtension.appSetup() {
         versionName = "1.0"
     }
 
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro")
-        }
-    }
-
+    projectBuildTypes()
     projectCompileOptions()
 }
 
 fun LibraryExtension.moduleSetup() {
-    defaultSetup()
-
     viewBinding {
         isEnabled = true
     }
 
+    projectDefaultConfig()
+    projectBuildTypes()
     projectCompileOptions()
 }
 
-private fun TestedExtension.defaultSetup() {
+private fun TestedExtension.projectDefaultConfig() {
     compileSdkVersion = ProjectConfig.compileSdkVersion
 
     defaultConfig {
@@ -47,7 +39,28 @@ private fun TestedExtension.defaultSetup() {
     }
 }
 
-fun TestedExtension.projectCompileOptions() {
+private fun TestedExtension.projectBuildTypes() {
+    buildTypes {
+        getByName("debug") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro")
+            buildConfigField("String",
+                "BASE_URL",
+                "\"https://609a908e0f5a13001721b74e.mockapi.io/picpay/api/\"")
+        }
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro")
+            buildConfigField("String",
+                "BASE_URL",
+                "\"https://609a908e0f5a13001721b74e.mockapi.io/picpay/api/\"")
+        }
+    }
+}
+
+private fun TestedExtension.projectCompileOptions() {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

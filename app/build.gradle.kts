@@ -15,23 +15,17 @@ android {
 
 dependencies {
     implementation(project(":designsystem"))
+    implementation(project(":core"))
+
     implementation(Dependencies.Kotlin.kotlin)
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.appCompat)
-    implementation(Dependencies.Android.constraintLayout)
-    implementation(Dependencies.Android.material)
     implementation(Dependencies.Koin.android)
     implementation(Dependencies.Android.lifecycleViewModel)
     implementation(Dependencies.Android.lifecycleLivedata)
     implementation(Dependencies.Android.lifecycleRuntimeKtx)
     implementation(Dependencies.Kotlin.coroutinesCore)
     implementation(Dependencies.Kotlin.coroutinesAndroid)
-    implementation(Dependencies.Google.gson)
-    implementation(Dependencies.Retrofit2.retrofit)
-    implementation(Dependencies.Retrofit2.rxJava2)
-    implementation(Dependencies.Retrofit2.converterGson)
-    implementation(Dependencies.OkHttp.okHttp)
-    implementation(Dependencies.OkHttp.mockWebServer)
     implementation(Dependencies.Picasso.picasso)
     implementation(Dependencies.Hdodenhof.circleImageView)
 

@@ -23,6 +23,7 @@ object Dependencies {
 
     object Koin {
         const val android = "io.insert-koin:koin-android:${Versions.Koin.koin}"
+        const val core = "io.insert-koin:koin-core:${Versions.Koin.koin}"
     }
 
     object Google {
@@ -31,7 +32,6 @@ object Dependencies {
 
     object Retrofit2 {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Retrofit2.retrofit}"
-        const val rxJava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.Retrofit2.retrofit}"
         const val converterGson =
             "com.squareup.retrofit2:converter-gson:${Versions.Retrofit2.retrofit}"
     }

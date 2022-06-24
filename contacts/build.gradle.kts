@@ -10,4 +10,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":designsystem"))
+    implementation(Dependencies.Retrofit2.retrofit)
+    implementation(Dependencies.Google.gson)
+    implementation(Dependencies.Android.constraintLayout)
+    implementation(Dependencies.Android.material)
 }

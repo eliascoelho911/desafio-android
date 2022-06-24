@@ -17,7 +17,7 @@ class UserListItemViewHolder(
     val progressBar by lazy { itemView.findViewById<ProgressBar>(R.id.progressBar) }
     val picture by lazy { itemView.findViewById<CircleImageView>(R.id.picture) }
 
-    fun bind(user: User) {
+    fun bind(user: com.picpay.desafio.android.contacts.domain.repositories.entities.User) {
         name.text = user.name
         username.text = user.username
         progressBar.visibility = View.VISIBLE
