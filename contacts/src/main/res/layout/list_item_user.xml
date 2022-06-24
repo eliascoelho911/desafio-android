@@ -22,7 +22,7 @@
             tools:src="@drawable/ic_round_account_circle" />
 
     <TextView
-            android:id="@+id/username"
+            android:id="@+id/fullName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_16"
@@ -32,17 +32,17 @@
             app:layout_constraintStart_toEndOf="@id/picture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/picture"
-            tools:text="\@username" />
+            tools:text="Name Surname" />
 
     <TextView
-            android:id="@+id/name"
+            android:id="@+id/username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/detailColor"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="@id/picture"
-            app:layout_constraintStart_toStartOf="@id/username"
+            app:layout_constraintStart_toStartOf="@id/fullName"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Name Surname" />
+            tools:text="\@username" />
 </androidx.constraintlayout.widget.ConstraintLayout>

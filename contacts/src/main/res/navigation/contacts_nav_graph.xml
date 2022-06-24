@@ -6,5 +6,5 @@
 
     <fragment
             android:id="@+id/contactsFragment"
-            android:name="com.picpay.desafio.android.contacts.ui.ContactsFragment" />
+            android:name="com.picpay.desafio.android.contacts.ui.contacts.list.ContactsListFragment" />
 </navigation>
