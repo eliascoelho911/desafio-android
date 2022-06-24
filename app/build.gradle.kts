@@ -14,6 +14,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":designsystem"))
     implementation(Dependencies.Kotlin.kotlin)
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.appCompat)

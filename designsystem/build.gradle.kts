@@ -10,4 +10,5 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.Android.material)
 }

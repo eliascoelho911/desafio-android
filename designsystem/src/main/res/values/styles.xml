@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="PicPayText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/onBackgroundColor</item>
+    </style>
+
+    <style name="PicPayText.Title" parent="PicPayText">
+        <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
