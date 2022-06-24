@@ -7,7 +7,6 @@ import com.picpay.desafio.android.contacts.domain.usecase.GetAllContacts
 import com.picpay.desafio.android.core.network.fold
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class ContactsListViewModel(
@@ -31,28 +30,21 @@ internal class ContactsListViewModel(
     }
 
     private fun loadingState() {
-        _uiState.update { currentUiState ->
-            currentUiState.copy(isLoading = true)
-        }
+        _uiState.value = ContactsListUiState(
+            isLoading = true
+        )
     }
 
     private fun successOnGetAllContactsState(contacts: List<Contact>) {
-        _uiState.update { currentUiState ->
-            currentUiState.copy(
-                isLoading = false,
-                contacts = contacts.mapToContactItem(),
-                messageToUser = null
-            )
-        }
+        _uiState.value = ContactsListUiState(
+            contacts = contacts.mapToContactItem(),
+        )
     }
 
     private fun errorState(message: String) {
-        _uiState.update { currentUiState ->
-            currentUiState.copy(
-                isLoading = false,
-                messageToUser = message
-            )
-        }
+        _uiState.value = ContactsListUiState(
+            error = ErrorUiState(message = message, onClickTryAgain = { refreshContacts() })
+        )
     }
 
     private fun List<Contact>.mapToContactItem(): List<ContactItemUiState> = map {
@@ -65,11 +57,10 @@ internal class ContactsListViewModel(
     }
 }
 
-//todo notificação de erros
 internal data class ContactsListUiState(
     val isLoading: Boolean = false,
     val contacts: List<ContactItemUiState> = emptyList(),
-    val messageToUser: String? = null,
+    val error: ErrorUiState? = null,
 )
 
 internal data class ContactItemUiState(
@@ -77,4 +68,9 @@ internal data class ContactItemUiState(
     val imgUrl: String,
     val fullName: String,
     val username: String,
+)
+
+internal data class ErrorUiState(
+    val message: String,
+    val onClickTryAgain: () -> Unit,
 )

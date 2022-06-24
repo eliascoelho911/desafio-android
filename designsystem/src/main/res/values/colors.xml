@@ -9,4 +9,5 @@
     <color name="detailColor">#80FFFFFF</color>
     <color name="backgroundColor">#000005</color>
     <color name="onBackgroundColor">#ffffff</color>
+    <color name="errorColor">#E53935</color>
 </resources>

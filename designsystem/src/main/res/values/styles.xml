@@ -4,6 +4,13 @@
         <item name="android:textColor">@color/onBackgroundColor</item>
     </style>
 
+    <style name="PicPayText.Body" parent="PicPayText">
+    </style>
+
+    <style name="PicPayText.BodyBold" parent="PicPayText.Body">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="PicPayText.Title" parent="PicPayText">
         <item name="android:textSize">@dimen/text_size_28</item>
         <item name="android:textStyle">bold</item>

@@ -46,7 +46,14 @@ internal class ContactsListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 contactsSharedViewModel.uiState.collect { uiState ->
-                    binding.loadingView.isVisible = uiState.isLoading
+                    with(binding) {
+                        loadingView.isVisible = uiState.isLoading
+                        errorView.isVisible = uiState.error != null
+                        uiState.error?.let { error ->
+                            errorView.message = error.message
+                            errorView.onClickTryAgain = error.onClickTryAgain
+                        }
+                    }
                     contactsListAdapter.submitList(uiState.contacts)
                 }
             }
