@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.contacts.ui.contacts.list
+package com.picpay.desafio.android.contacts.ui.contactsList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,8 +16,8 @@ internal class ContactsListViewModel(
     val uiState = _uiState.asStateFlow()
 
     fun refreshContacts() {
+        loadingState()
         viewModelScope.launch {
-            loadingState()
             getAllContacts().fold(
                 onSuccess = { contacts ->
                     successOnGetAllContactsState(contacts)
@@ -41,18 +41,21 @@ internal class ContactsListViewModel(
         )
     }
 
-    private fun errorState(message: String) {
-        _uiState.value = ContactsListUiState(
-            error = ErrorUiState(message = message, onClickTryAgain = { refreshContacts() })
-        )
-    }
-
     private fun List<Contact>.mapToContactItem(): List<ContactItemUiState> = map {
         ContactItemUiState(
             id = it.id,
             imgUrl = it.imgUrl,
             fullName = it.fullName,
             username = it.username
+        )
+    }
+
+    private fun errorState(message: String) {
+        _uiState.value = ContactsListUiState(
+            error = ErrorUiState(
+                message = message,
+                onClickTryAgain = { refreshContacts() }
+            )
         )
     }
 }

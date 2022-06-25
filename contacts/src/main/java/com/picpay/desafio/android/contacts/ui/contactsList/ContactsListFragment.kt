@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.contacts.ui.contacts.list
+package com.picpay.desafio.android.contacts.ui.contactsList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.picpay.desafio.android.contacts.databinding.ContactsListFragmentBinding
-import com.picpay.desafio.android.contacts.ui.contacts.list.adapters.ContactsListAdapter
+import com.picpay.desafio.android.contacts.ui.contactsList.adapters.ContactsListAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,17 +46,21 @@ internal class ContactsListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 contactsSharedViewModel.uiState.collect { uiState ->
-                    with(binding) {
-                        loadingView.isVisible = uiState.isLoading
-                        errorView.isVisible = uiState.error != null
-                        uiState.error?.let { error ->
-                            errorView.message = error.message
-                            errorView.onClickTryAgain = error.onClickTryAgain
-                        }
-                    }
-                    contactsListAdapter.submitList(uiState.contacts)
+                    bind(uiState)
                 }
             }
         }
+    }
+
+    private fun bind(uiState: ContactsListUiState) {
+        with(binding) {
+            loadingView.isVisible = uiState.isLoading
+            errorView.isVisible = uiState.error != null
+            uiState.error?.let { error ->
+                errorView.message = error.message
+                errorView.onClickTryAgain = error.onClickTryAgain
+            }
+        }
+        contactsListAdapter.submitList(uiState.contacts)
     }
 }

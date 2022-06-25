@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.contacts.ui.contacts
+package com.picpay.desafio.android.contacts.ui.commons
 
 import android.content.Context
 import com.picpay.desafio.android.contacts.R

@@ -5,8 +5,8 @@ import com.picpay.desafio.android.contacts.data.services.PicPayService
 import com.picpay.desafio.android.contacts.domain.repositories.ContactsRepository
 import com.picpay.desafio.android.contacts.domain.usecase.ContactsUseCasesMessageProvider
 import com.picpay.desafio.android.contacts.domain.usecase.GetAllContacts
-import com.picpay.desafio.android.contacts.ui.contacts.list.ContactsListViewModel
-import com.picpay.desafio.android.contacts.ui.contacts.ContactsUseCasesMessageProviderImpl
+import com.picpay.desafio.android.contacts.ui.commons.ContactsUseCasesMessageProviderImpl
+import com.picpay.desafio.android.contacts.ui.contactsList.ContactsListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module

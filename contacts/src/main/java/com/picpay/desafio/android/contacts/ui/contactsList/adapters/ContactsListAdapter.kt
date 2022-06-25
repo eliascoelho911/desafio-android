@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.contacts.ui.contacts.list.adapters
+package com.picpay.desafio.android.contacts.ui.contactsList.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.contacts.R
 import com.picpay.desafio.android.contacts.databinding.ListItemUserBinding
-import com.picpay.desafio.android.contacts.ui.contacts.list.ContactItemUiState
+import com.picpay.desafio.android.contacts.ui.contactsList.ContactItemUiState
 
 internal class ContactsListAdapter :
     ListAdapter<ContactItemUiState, ContactViewHolder>(ContactDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        val binding = ListItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ContactViewHolder(binding)
     }
 
@@ -22,7 +23,8 @@ internal class ContactsListAdapter :
     }
 }
 
-internal class ContactViewHolder(private val binding: ListItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
+internal class ContactViewHolder(private val binding: ListItemUserBinding) :
+    RecyclerView.ViewHolder(binding.root) {
     fun bind(item: ContactItemUiState) {
         with(binding) {
             fullName.text = item.fullName

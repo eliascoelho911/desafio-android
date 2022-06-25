@@ -6,14 +6,13 @@ import com.picpay.desafio.android.core.network.UseCaseResult
 
 internal class GetAllContacts(
     private val contactsRepository: ContactsRepository,
-    private val resourcesProvider: ContactsUseCasesMessageProvider,
+    private val messageProvider: ContactsUseCasesMessageProvider,
 ) {
     suspend operator fun invoke(): UseCaseResult<List<Contact>> =
         contactsRepository.getAllContacts().getOrNull()?.let { data ->
             UseCaseResult.Success(data)
-        } ?: UseCaseResult.Error(resourcesProvider.defaultError)
+        } ?: UseCaseResult.Error(messageProvider.defaultError)
 }
-
 
 internal interface ContactsUseCasesMessageProvider {
     val defaultError: String
