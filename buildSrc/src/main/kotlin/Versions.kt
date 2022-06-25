@@ -32,7 +32,8 @@ object Versions {
     }
 
     object Picasso {
-        const val picasso = "2.71828"
+        const val picasso = "2.8"
+        const val transformations = "2.4.0"
     }
 
     object Hdodenhof {

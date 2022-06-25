@@ -7,9 +7,6 @@
         android:background="@color/backgroundColor"
         android:paddingHorizontal="@dimen/spacing_24">
 
-    <!--Todo colocar um shimmer -->
-
-    <!--Todo lembrar que essa imagem tem que ser redonda -->
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/picture"
             android:layout_width="@dimen/size_48"
@@ -22,7 +19,7 @@
             tools:src="@drawable/ic_round_account_circle" />
 
     <TextView
-            android:id="@+id/fullName"
+            android:id="@+id/username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_16"
@@ -32,10 +29,10 @@
             app:layout_constraintStart_toEndOf="@id/picture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/picture"
-            tools:text="Name Surname" />
+            tools:text="\@username" />
 
     <TextView
-            android:id="@+id/username"
+            android:id="@+id/fullName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/detailColor"
@@ -43,7 +40,7 @@
             android:ellipsize="end"
             android:textAppearance="@style/PicPayText.Body"
             app:layout_constraintBottom_toBottomOf="@id/picture"
-            app:layout_constraintStart_toStartOf="@id/fullName"
+            app:layout_constraintStart_toStartOf="@id/username"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="\@username" />
+            tools:text="Name Surname" />
 </androidx.constraintlayout.widget.ConstraintLayout>

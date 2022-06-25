@@ -8,13 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.contacts.R
 import com.picpay.desafio.android.contacts.databinding.ListItemUserBinding
 import com.picpay.desafio.android.contacts.ui.contactsList.ContactItemUiState
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 internal class ContactsListAdapter :
     ListAdapter<ContactItemUiState, ContactViewHolder>(ContactDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        val binding =
-            ListItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ListItemUserBinding.inflate(layoutInflater, parent, false)
         return ContactViewHolder(binding)
     }
 
@@ -29,11 +31,22 @@ internal class ContactViewHolder(private val binding: ListItemUserBinding) :
         with(binding) {
             fullName.text = item.fullName
             username.text = binding.root.context.getString(R.string.username, item.username)
+            bindPicture(item)
         }
+    }
+
+    private fun ListItemUserBinding.bindPicture(item: ContactItemUiState) {
+        Picasso.get()
+            .load(item.imgUrl)
+            .fit()
+            .centerCrop()
+            .placeholder(R.drawable.ic_round_account_circle)
+            .transform(CropCircleTransformation())
+            .into(picture)
     }
 }
 
-internal class ContactDiffUtil : DiffUtil.ItemCallback<ContactItemUiState>() {
+private class ContactDiffUtil : DiffUtil.ItemCallback<ContactItemUiState>() {
     override fun areItemsTheSame(
         oldItem: ContactItemUiState,
         newItem: ContactItemUiState,

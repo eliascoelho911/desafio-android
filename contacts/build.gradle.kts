@@ -17,5 +17,6 @@ dependencies {
     implementation(Dependencies.Android.navigation)
     implementation(Dependencies.Android.lifecycleRuntimeKtx)
     implementation(Dependencies.Picasso.picasso)
+    implementation(Dependencies.Picasso.transformations)
     implementation(Dependencies.Koin.android)
 }

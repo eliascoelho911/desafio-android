@@ -49,6 +49,7 @@ object Dependencies {
 
     object Picasso {
         const val picasso = "com.squareup.picasso:picasso:${Versions.Picasso.picasso}"
+        const val transformations = "jp.wasabeef:picasso-transformations:${Versions.Picasso.transformations}"
     }
 
     object Hdodenhof {
