@@ -38,6 +38,7 @@ internal class ContactsListViewModel(
     private fun successOnGetAllContactsState(contacts: List<Contact>) {
         _uiState.value = ContactsListUiState(
             contacts = contacts.mapToContactItem(),
+            scrollIsEnabled = true
         )
     }
 
@@ -64,6 +65,7 @@ internal data class ContactsListUiState(
     val isLoading: Boolean = false,
     val contacts: List<ContactItemUiState> = emptyList(),
     val error: ErrorUiState? = null,
+    val scrollIsEnabled: Boolean = false
 )
 
 internal data class ContactItemUiState(

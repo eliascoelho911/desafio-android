@@ -11,8 +11,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="PicPayText.Title" parent="PicPayText">
+    <style name="PicPayText.TitleBold" parent="PicPayText">
         <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PicPayText.SmallTitle" parent="PicPayText">
+        <item name="android:textSize">@dimen/text_size_20</item>
+    </style>
+
+    <style name="PicPayText.SmallTitleBold" parent="PicPayText.SmallTitle">
         <item name="android:textStyle">bold</item>
     </style>
 

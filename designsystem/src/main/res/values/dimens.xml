@@ -2,6 +2,7 @@
 <resources>
     <!-- region Text size -->
     <dimen name="text_size_28">28sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
     <!-- endregion -->
 
     <!-- region Spacing -->
@@ -14,6 +15,7 @@
 
     <!-- region Size -->
     <dimen name="size_48">48dp</dimen>
+    <dimen name="size_128">128dp</dimen>
     <!-- endregion -->
 
 </resources>

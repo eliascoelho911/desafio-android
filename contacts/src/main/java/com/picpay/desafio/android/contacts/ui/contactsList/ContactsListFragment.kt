@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.appbar.AppBarLayout
 import com.picpay.desafio.android.contacts.databinding.ContactsListFragmentBinding
 import com.picpay.desafio.android.contacts.ui.contactsList.adapters.ContactsListAdapter
 import kotlinx.coroutines.flow.collect
@@ -54,13 +56,25 @@ internal class ContactsListFragment : Fragment() {
 
     private fun bind(uiState: ContactsListUiState) {
         with(binding) {
+            updateCollapsingToolbarScrollBehavior(uiState.scrollIsEnabled)
             loadingView.isVisible = uiState.isLoading
             errorView.isVisible = uiState.error != null
             uiState.error?.let { error ->
-                errorView.message = error.message
+                errorView.setMessage(error.message)
                 errorView.onClickTryAgain = error.onClickTryAgain
             }
         }
         contactsListAdapter.submitList(uiState.contacts)
+    }
+
+    private fun ContactsListFragmentBinding.updateCollapsingToolbarScrollBehavior(
+        scrollIsEnabled: Boolean,
+    ) {
+        collapsingToolbarLayout.updateLayoutParams<AppBarLayout.LayoutParams> {
+            scrollFlags = if (scrollIsEnabled) {
+                AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or
+                        AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+            } else AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+        }
     }
 }

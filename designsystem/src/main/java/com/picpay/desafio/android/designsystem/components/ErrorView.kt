@@ -5,8 +5,6 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.FrameLayout
-import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
@@ -17,82 +15,57 @@ class ErrorView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : FrameLayout(context, attrs, defStyleAttr) {
-    private val binding: ErrorViewBinding = ErrorViewBinding.inflate(LayoutInflater.from(context), this)
-
-    var icon: Drawable? = null
-        set(value) {
-            field = value
-            invalidate()
-            requestLayout()
-        }
-
-    var message: String? = null
-        set(value) {
-            field = value
-            invalidate()
-            requestLayout()
-        }
-
-    @ColorInt
-    var iconTint: Int = 0
-        set(value) {
-            field = value
-            invalidate()
-            requestLayout()
-        }
-
-    @ColorInt
-    var textColor: Int = 0
-        set(value) {
-            field = value
-            invalidate()
-            requestLayout()
-        }
-
-    @ColorInt
-    var buttonTint: Int = 0
-        set(value) {
-            field = value
-            invalidate()
-            requestLayout()
-        }
+) : LinearLayoutCompat(context, attrs, defStyleAttr) {
+    private val binding: ErrorViewBinding =
+        ErrorViewBinding.inflate(LayoutInflater.from(context), this)
 
     var onClickTryAgain: () -> Unit = {}
 
     init {
-        initAttrs(context, attrs)
+        fillAttributes(context, attrs)
+        setup()
     }
 
-    private fun initAttrs(context: Context, attrs: AttributeSet?) {
+    private fun fillAttributes(context: Context, attrs: AttributeSet?) {
         context.theme.obtainStyledAttributes(attrs, R.styleable.ErrorView, 0, 0).apply {
             runCatching {
-                icon = getDrawable(R.styleable.ErrorView_icon) ?: defaultIcon
-                message = getString(R.styleable.ErrorView_message)
-                iconTint = getColor(R.styleable.ErrorView_iconTint, defaultIconTint)
-                textColor = getColor(R.styleable.ErrorView_textColor, defaultTextColor)
-                buttonTint = getColor(R.styleable.ErrorView_buttonTint, defaultButtonTint)
+                (getDrawable(R.styleable.ErrorView_icon) ?: defaultIcon)?.let(::setIcon)
+                (getString(R.styleable.ErrorView_message))?.let(::setMessage)
+                getColor(R.styleable.ErrorView_iconTint, defaultIconTint).let(::setIconTint)
+                getColor(R.styleable.ErrorView_textColor, defaultTextColor).let(::setMessageColor)
+                getColor(R.styleable.ErrorView_buttonTint, defaultButtonTint).let(::setButtonTint)
             }
             recycle()
         }
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        bindViews()
+    fun setIcon(drawable: Drawable) {
+        binding.icon.setImageDrawable(drawable)
     }
 
-    private fun bindViews() {
-        with(binding) {
-            message.text = this@ErrorView.message
-            message.setTextColor(this@ErrorView.textColor)
-            icon.setImageDrawable(this@ErrorView.icon)
-            icon.imageTintList = ColorStateList.valueOf(this@ErrorView.iconTint)
-            tryAgainButton.strokeColor = ColorStateList.valueOf(this@ErrorView.buttonTint)
-            tryAgainButton.setTextColor(this@ErrorView.buttonTint)
-            tryAgainButton.setOnClickListener {
-                onClickTryAgain()
-            }
+    fun setMessage(message: String) {
+        binding.message.text = message
+    }
+
+    fun setIconTint(@ColorInt color: Int) {
+        binding.icon.imageTintList = ColorStateList.valueOf(color)
+    }
+
+    fun setMessageColor(@ColorInt color: Int) {
+        binding.message.setTextColor(color)
+    }
+
+    fun setButtonTint(@ColorInt color: Int) {
+        binding.tryAgainButton.apply {
+            strokeColor = ColorStateList.valueOf(color)
+            setTextColor(color)
+        }
+    }
+
+    private fun setup() {
+        orientation = VERTICAL
+        binding.tryAgainButton.setOnClickListener {
+            onClickTryAgain()
         }
     }
 
