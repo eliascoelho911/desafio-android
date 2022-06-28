@@ -1,15 +1,20 @@
 package com.picpay.desafio.android.contacts.ui.contactsList
 
+import androidx.annotation.StringRes
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.picpay.desafio.android.contacts.R
 import com.picpay.desafio.android.contacts.domain.entities.Contact
 import com.picpay.desafio.android.contacts.domain.usecase.GetAllContacts
-import com.picpay.desafio.android.core.network.fold
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+private const val ContactsKey = "contacts"
+
 internal class ContactsListViewModel(
+    private val savedStateHandle: SavedStateHandle,
     private val getAllContacts: GetAllContacts,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(ContactsListUiState())
@@ -18,12 +23,16 @@ internal class ContactsListViewModel(
     fun refreshContacts() {
         loadingState()
         viewModelScope.launch {
-            getAllContacts().fold(
+            val contactsResult = savedStateHandle.get<Result<List<Contact>>>(ContactsKey)
+                ?: getAllContacts()
+            contactsResult.fold(
                 onSuccess = { contacts ->
-                    successOnGetAllContactsState(contacts)
+                    successOnGetAllContactsState(contacts.mapToContactItem())
+                    savedStateHandle.set(ContactsKey, contactsResult)
                 },
-                onError = { message ->
-                    errorState(message)
+                onFailure = {
+                    errorState(R.string.error)
+                    savedStateHandle.set(ContactsKey, null)
                 }
             )
         }
@@ -35,9 +44,9 @@ internal class ContactsListViewModel(
         )
     }
 
-    private fun successOnGetAllContactsState(contacts: List<Contact>) {
+    private fun successOnGetAllContactsState(contacts: List<ContactItemUiState>) {
         _uiState.value = ContactsListUiState(
-            contacts = contacts.mapToContactItem(),
+            contacts = contacts,
             scrollIsEnabled = true
         )
     }
@@ -51,10 +60,10 @@ internal class ContactsListViewModel(
         )
     }
 
-    private fun errorState(message: String) {
+    private fun errorState(@StringRes messageRes: Int) {
         _uiState.value = ContactsListUiState(
             error = ErrorUiState(
-                message = message,
+                messageRes = messageRes,
                 onClickTryAgain = { refreshContacts() }
             )
         )
@@ -65,7 +74,7 @@ internal data class ContactsListUiState(
     val isLoading: Boolean = false,
     val contacts: List<ContactItemUiState> = emptyList(),
     val error: ErrorUiState? = null,
-    val scrollIsEnabled: Boolean = false
+    val scrollIsEnabled: Boolean = false,
 )
 
 internal data class ContactItemUiState(
@@ -76,6 +85,6 @@ internal data class ContactItemUiState(
 )
 
 internal data class ErrorUiState(
-    val message: String,
+    @StringRes val messageRes: Int,
     val onClickTryAgain: () -> Unit,
 )

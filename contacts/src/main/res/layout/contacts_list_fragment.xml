@@ -7,6 +7,7 @@
         android:background="@color/backgroundColor">
 
     <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_128"
             android:background="@android:color/transparent">
@@ -19,6 +20,7 @@
                 app:expandedTitleMarginBottom="@dimen/spacing_16"
                 app:expandedTitleTextAppearance="@style/PicPayText.TitleBold"
                 app:collapsedTitleTextAppearance="@style/PicPayText.SmallTitleBold"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="@string/title">
 
             <com.google.android.material.appbar.MaterialToolbar

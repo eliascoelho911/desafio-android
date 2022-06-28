@@ -11,6 +11,7 @@ android {
 
 dependencies {
     implementation(Dependencies.Android.material)
+    implementation(Dependencies.Android.appCompat)
     implementation(Dependencies.Android.constraintLayout)
     implementation(Dependencies.Facebook.shimmer)
 }

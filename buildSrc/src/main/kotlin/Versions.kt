@@ -6,7 +6,7 @@ object Versions {
     }
 
     object Android {
-        const val appCompat = "1.1.0"
+        const val appCompat = "1.4.2"
         const val coreKtx = "1.2.0"
         const val coreTesting = "2.1.0"
         const val constraintLayout = "1.1.3"
@@ -17,6 +17,7 @@ object Versions {
         const val coreKtxTest = "1.2.0"
         const val navigation = "2.4.2"
         const val fragmentKtx = "1.4.1"
+        const val recyclerView = "1.2.1"
     }
 
     object Facebook {

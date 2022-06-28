@@ -16,6 +16,7 @@ dependencies {
     implementation(Dependencies.Android.material)
     implementation(Dependencies.Android.navigation)
     implementation(Dependencies.Android.lifecycleRuntimeKtx)
+    implementation(Dependencies.Android.recyclerView)
     implementation(Dependencies.Picasso.picasso)
     implementation(Dependencies.Picasso.transformations)
     implementation(Dependencies.Koin.android)
