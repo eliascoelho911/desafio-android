@@ -2,6 +2,7 @@ import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.TestedExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.JavaVersion
+import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 fun BaseAppModuleExtension.appSetup() {
     projectDefaultConfig()
@@ -16,16 +17,6 @@ fun BaseAppModuleExtension.appSetup() {
     projectCompileOptions()
 }
 
-fun LibraryExtension.moduleSetup() {
-    viewBinding {
-        isEnabled = true
-    }
-
-    projectDefaultConfig()
-    projectBuildTypes()
-    projectCompileOptions()
-}
-
 private fun TestedExtension.projectDefaultConfig() {
     compileSdkVersion = ProjectConfig.compileSdkVersion
 
@@ -36,6 +27,12 @@ private fun TestedExtension.projectDefaultConfig() {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
@@ -65,4 +62,48 @@ private fun TestedExtension.projectCompileOptions() {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+}
+
+fun LibraryExtension.moduleSetup() {
+    viewBinding {
+        isEnabled = true
+    }
+
+    projectDefaultConfig()
+    projectBuildTypes()
+    projectCompileOptions()
+    setupSharedTests()
+}
+
+private fun LibraryExtension.setupSharedTests() {
+    sourceSets {
+        val sharedTestDir = "src/sharedTest/"
+        val sharedTestSourceDir = "${sharedTestDir}java"
+        val sharedTestResourceDir = "${sharedTestDir}resources"
+        named("test") {
+            java.srcDir(sharedTestSourceDir)
+            resources.srcDir(sharedTestResourceDir)
+        }
+        named("androidTest") {
+            java.srcDir(sharedTestSourceDir)
+            resources.srcDir(sharedTestResourceDir)
+        }
+    }
+}
+
+fun DependencyHandlerScope.testDependencies() {
+    "testImplementation"(TestDependencies.Robolectric.robolectric)
+    "testImplementation"(TestDependencies.JUnit.junit)
+    "testImplementation"(TestDependencies.Android.junitExt)
+    "testImplementation"(TestDependencies.Android.espressoCore)
+    "testImplementation"(TestDependencies.Android.coreKtx)
+    "testImplementation"(TestDependencies.Android.coreTesting)
+    "testImplementation"(TestDependencies.Kotlin.coroutinesTest)
+    "testImplementation"(TestDependencies.Android.runner)
+    "androidTestImplementation"(TestDependencies.Android.espressoCore)
+    "androidTestImplementation"(TestDependencies.Android.runner)
+    "androidTestImplementation"(TestDependencies.Android.junitExt)
+    "androidTestImplementation"(TestDependencies.Android.coreKtx)
+    "androidTestImplementation"(TestDependencies.Android.coreTesting)
+    "androidTestImplementation"(TestDependencies.Robolectric.annotations)
 }

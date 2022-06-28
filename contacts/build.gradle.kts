@@ -20,4 +20,6 @@ dependencies {
     implementation(Dependencies.Picasso.picasso)
     implementation(Dependencies.Picasso.transformations)
     implementation(Dependencies.Koin.android)
+
+    testDependencies()
 }
