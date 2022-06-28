@@ -23,18 +23,21 @@ internal class ContactsListViewModel(
     fun refreshContacts() {
         loadingState()
         viewModelScope.launch {
-            val contactsResult = savedStateHandle.get<Result<List<Contact>>>(ContactsKey)
-                ?: getAllContacts()
-            contactsResult.fold(
-                onSuccess = { contacts ->
-                    successOnGetAllContactsState(contacts.mapToContactItem())
-                    savedStateHandle.set(ContactsKey, contactsResult)
-                },
-                onFailure = {
-                    errorState(R.string.error)
-                    savedStateHandle.set(ContactsKey, null)
-                }
-            )
+            savedStateHandle.get<List<ContactItemUiState>>(ContactsKey)?.let { contacts ->
+                successOnGetAllContactsState(contacts)
+            } ?: run {
+                getAllContacts().fold(
+                    onSuccess = { contacts ->
+                        val contactItems = contacts.mapToContactItem()
+                        successOnGetAllContactsState(contactItems)
+                        savedStateHandle.set(ContactsKey, contactItems)
+                    },
+                    onFailure = {
+                        errorState(R.string.error)
+                        savedStateHandle.set(ContactsKey, null)
+                    }
+                )
+            }
         }
     }
 

@@ -1,9 +1,9 @@
-package com.picpay.desafio.android.contacts.data.services
+package com.picpay.desafio.android.contacts.data.dataSources.remote
 
 import com.picpay.desafio.android.contacts.data.dtos.ContactDTO
 import retrofit2.http.GET
 
-internal interface PicPayService {
+internal interface ContactsRemoteDataSource {
 
     @GET("users")
     suspend fun getAllContacts(): List<ContactDTO>
