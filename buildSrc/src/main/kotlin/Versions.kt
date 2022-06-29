@@ -19,6 +19,7 @@ object Versions {
         const val navigation = "2.4.2"
         const val fragmentKtx = "1.4.1"
         const val recyclerView = "1.2.1"
+        const val fragmentTesting = "1.4.1"
     }
 
     object Facebook {
@@ -30,7 +31,7 @@ object Versions {
     }
 
     object OkHttp3 {
-        const val okhttp = "4.3.1"
+        const val okhttp = "4.10.0"
     }
 
     object Picasso {
@@ -60,5 +61,9 @@ object Versions {
 
     object Robolectric {
         const val robolectric = "4.8"
+    }
+
+    object MockK {
+        const val mockK = "1.12.4"
     }
 }

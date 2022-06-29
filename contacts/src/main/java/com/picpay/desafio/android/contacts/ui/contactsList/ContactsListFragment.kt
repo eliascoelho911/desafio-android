@@ -24,6 +24,10 @@ import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
 private const val AppBarIsExpandedKey = "AppBarIsExpanded"
 
+/**
+ * Todo: Testar se o scroll está desativado nos estados de loading e erro
+ * Todo: Testar cenários de loading
+ */
 internal class ContactsListFragment : Fragment() {
 
     private val contactsSharedViewModel: ContactsListViewModel by stateViewModel()

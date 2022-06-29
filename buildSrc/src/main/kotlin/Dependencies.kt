@@ -45,7 +45,6 @@ object Dependencies {
 
     object OkHttp {
         const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.OkHttp3.okhttp}"
-        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.OkHttp3.okhttp}"
     }
 
     object Picasso {

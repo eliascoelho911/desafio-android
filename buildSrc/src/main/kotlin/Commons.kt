@@ -3,6 +3,7 @@ import com.android.build.gradle.TestedExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.JavaVersion
 import org.gradle.kotlin.dsl.DependencyHandlerScope
+import org.gradle.kotlin.dsl.project
 
 fun BaseAppModuleExtension.appSetup() {
     projectDefaultConfig()
@@ -100,10 +101,17 @@ fun DependencyHandlerScope.testDependencies() {
     "testImplementation"(TestDependencies.Android.coreTesting)
     "testImplementation"(TestDependencies.Kotlin.coroutinesTest)
     "testImplementation"(TestDependencies.Android.runner)
+    "testImplementation"(TestDependencies.OkHttp3.mockWebServer)
+    "testImplementation"(TestDependencies.MockK.mockK)
+    "testImplementation"(TestDependencies.Koin.koinTest)
+    "testImplementation"(TestDependencies.Koin.koinTestJunit4)
+    "debugImplementation"(TestDependencies.Android.fragmentTesting)
+    "androidTestImplementation"(TestDependencies.OkHttp3.mockWebServer)
     "androidTestImplementation"(TestDependencies.Android.espressoCore)
     "androidTestImplementation"(TestDependencies.Android.runner)
     "androidTestImplementation"(TestDependencies.Android.junitExt)
     "androidTestImplementation"(TestDependencies.Android.coreKtx)
     "androidTestImplementation"(TestDependencies.Android.coreTesting)
+    "androidTestImplementation"(TestDependencies.MockK.android)
     "androidTestImplementation"(TestDependencies.Robolectric.annotations)
 }

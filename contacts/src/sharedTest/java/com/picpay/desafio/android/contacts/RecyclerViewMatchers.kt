@@ -1,14 +1,20 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.contacts
 
 import android.view.View
+import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 
+//Todo: Mover para core
 object RecyclerViewMatchers {
 
     fun atPosition(
@@ -26,12 +32,12 @@ object RecyclerViewMatchers {
         }
     }
 
-    fun checkRecyclerViewItem(resId: Int, position: Int, withMatcher: Matcher<View>) {
-        Espresso.onView(ViewMatchers.withId(resId)).check(
-            ViewAssertions.matches(
+    fun checkRecyclerViewItem(@IdRes id: Int, position: Int, withMatcher: Matcher<View>) {
+        onView(withId(id)).check(
+            matches(
                 atPosition(
                     position,
-                    ViewMatchers.hasDescendant(withMatcher)
+                    hasDescendant(withMatcher)
                 )
             )
         )

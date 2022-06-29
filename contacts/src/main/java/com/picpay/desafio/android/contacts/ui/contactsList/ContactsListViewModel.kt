@@ -13,6 +13,14 @@ import kotlinx.coroutines.launch
 
 private const val ContactsKey = "contacts"
 
+/**
+ * Todo: Testar se refresh contacts inicia com loading
+ * Todo: Testar se refresh contacts está buscando cache e enviando sucesso se encontra
+ * Todo: Testar se refresh contacts está salvando cache quando chama getAllContacts e recebe sucesso
+ * Todo: Testar se refresh contacts está deletando cache quando chama getAllContacts e recebe erro
+ * Todo: Testar se refresh contacts está enviando erro quando recebe erro de getAllContacts
+ * Todo: Testar se refresh contacts está chamando getAllContacts quando não tem cache
+ */
 internal class ContactsListViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val getAllContacts: GetAllContacts,
@@ -47,19 +55,19 @@ internal class ContactsListViewModel(
         )
     }
 
-    private fun successOnGetAllContactsState(contacts: List<ContactItemUiState>) {
-        _uiState.value = ContactsListUiState(
-            contacts = contacts,
-            scrollIsEnabled = true
-        )
-    }
-
     private fun List<Contact>.mapToContactItem(): List<ContactItemUiState> = map {
         ContactItemUiState(
             id = it.id,
             imgUrl = it.imgUrl,
             fullName = it.fullName,
             username = it.username
+        )
+    }
+
+    private fun successOnGetAllContactsState(contacts: List<ContactItemUiState>) {
+        _uiState.value = ContactsListUiState(
+            contacts = contacts,
+            scrollIsEnabled = true
         )
     }
 
