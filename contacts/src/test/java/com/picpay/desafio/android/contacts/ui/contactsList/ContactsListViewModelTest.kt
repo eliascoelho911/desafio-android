@@ -30,11 +30,11 @@ class ContactsListViewModelTest : BaseTest() {
     @Test
     fun givenContactsSavedOnSavedStateHandleAndSuccessOnGetAllContacts_whenCallRefreshContacts_shouldEmitSuccess() =
         runBlocking {
-            every { savedStateHandle.get<List<ContactItemUiState>>(ContactsKey) } returns ContactItemUiStateListMock
+            every { savedStateHandle.get<List<ContactItemUiState>>(CONTACTS_KEY) } returns CONTACT_LIST_ITEM_UI_STATE_MOCK
 
             viewModel.refreshContacts()
 
-            isSuccessState(state = viewModel.uiState.value, contacts = ContactItemUiStateListMock)
+            isSuccessState(state = viewModel.uiState.value, contacts = CONTACT_LIST_ITEM_UI_STATE_MOCK)
             coVerify(exactly = 0) { getAllContacts() }
         }
 
@@ -42,12 +42,12 @@ class ContactsListViewModelTest : BaseTest() {
     fun givenContactsNotSavedOnSavedStateHandleAndFailureOnGetAllContacts_whenCallRefreshContacts_shouldEmitSuccessAndGetAllContacts() =
         runBlocking {
             contactsNotSavedOnSavedStateHandle()
-            mockGetAllContactsResponse(Result.success(ContactsListMock))
+            mockGetAllContactsResponse(Result.success(CONTACTS_LIST_MOCK))
 
             viewModel.refreshContacts()
 
-            isSuccessState(state = viewModel.uiState.value, contacts = ContactItemUiStateListMock)
-            verify { savedStateHandle.set(ContactsKey, ContactItemUiStateListMock) }
+            isSuccessState(state = viewModel.uiState.value, contacts = CONTACT_LIST_ITEM_UI_STATE_MOCK)
+            verify { savedStateHandle.set(CONTACTS_KEY, CONTACT_LIST_ITEM_UI_STATE_MOCK) }
         }
 
     @Test
@@ -59,7 +59,7 @@ class ContactsListViewModelTest : BaseTest() {
             viewModel.refreshContacts()
 
             isErrorState(state = viewModel.uiState.value)
-            verify { savedStateHandle.set(ContactsKey, null) }
+            verify { savedStateHandle.set(CONTACTS_KEY, null) }
         }
 
     private fun isLoadingState(state: ContactsListUiState) {
@@ -83,7 +83,7 @@ class ContactsListViewModelTest : BaseTest() {
     }
 
     private fun contactsNotSavedOnSavedStateHandle() {
-        every { savedStateHandle.get<List<ContactItemUiState>>(ContactsKey) } returns null
+        every { savedStateHandle.get<List<ContactItemUiState>>(CONTACTS_KEY) } returns null
     }
 
     private fun mockGetAllContactsResponse(response: Result<List<Contact>>) {
@@ -91,10 +91,10 @@ class ContactsListViewModelTest : BaseTest() {
     }
 }
 
-private const val ContactsKey = "contacts"
-private val ContactsListMock = listOf(
+private const val CONTACTS_KEY = "contacts"
+private val CONTACTS_LIST_MOCK = listOf(
     Contact(id = 0, "imgUrl", "fullName", "username")
 )
-private val ContactItemUiStateListMock = listOf(
+private val CONTACT_LIST_ITEM_UI_STATE_MOCK = listOf(
     ContactItemUiState(id = 0, "imgUrl", "fullName", "username")
 )

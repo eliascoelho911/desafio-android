@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.stateViewModel
 
-private const val AppBarIsExpandedKey = "AppBarIsExpanded"
+private const val APP_BAR_IS_EXPANDED_KEY = "AppBarIsExpanded"
 
 internal class ContactsListFragment : Fragment() {
 
@@ -50,7 +50,7 @@ internal class ContactsListFragment : Fragment() {
     }
 
     private fun getSavedState(savedInstanceState: Bundle?) {
-        appBarIsInitiallyExpanded = savedInstanceState?.getBoolean(AppBarIsExpandedKey) ?: true
+        appBarIsInitiallyExpanded = savedInstanceState?.getBoolean(APP_BAR_IS_EXPANDED_KEY) ?: true
     }
 
     private fun setupViews() {
@@ -106,6 +106,6 @@ internal class ContactsListFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBoolean(AppBarIsExpandedKey, binding.appBarLayout.isExpanded())
+        outState.putBoolean(APP_BAR_IS_EXPANDED_KEY, binding.appBarLayout.isExpanded())
     }
 }

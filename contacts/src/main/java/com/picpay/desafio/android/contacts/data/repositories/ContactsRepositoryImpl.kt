@@ -7,15 +7,15 @@ import com.picpay.desafio.android.contacts.data.dtos.ContactDTO
 import com.picpay.desafio.android.contacts.domain.repositories.ContactsRepository
 import kotlinx.coroutines.delay
 
-private const val AllContactsKey = "AllContacts"
+private const val ALL_CONTACTS_KEY = "AllContacts"
 
 internal class ContactsRepositoryImpl(
     private val remoteDataSource: ContactsRemoteDataSource,
     private val localDataSource: ContactsListLocalDataSource,
 ) : ContactsRepository {
     override suspend fun getAllContacts() = runCatching {
-        val data = localDataSource.get(AllContactsKey) ?: getAllContactsOnRemote()
-        localDataSource.set(AllContactsKey, data)
+        val data = localDataSource.get(ALL_CONTACTS_KEY) ?: getAllContactsOnRemote()
+        localDataSource.set(ALL_CONTACTS_KEY, data)
         data.map { it.toEntity() }
     }
 

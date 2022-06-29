@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-private const val ContactsKey = "contacts"
+private const val CONTACTS_KEY = "contacts"
 
 internal class ContactsListViewModel(
     private val savedStateHandle: SavedStateHandle,
@@ -23,18 +23,18 @@ internal class ContactsListViewModel(
     fun refreshContacts() {
         loadingState()
         viewModelScope.launch {
-            savedStateHandle.get<List<ContactItemUiState>>(ContactsKey)?.let { contacts ->
+            savedStateHandle.get<List<ContactItemUiState>>(CONTACTS_KEY)?.let { contacts ->
                 successOnGetAllContactsState(contacts)
             } ?: run {
                 getAllContacts().fold(
                     onSuccess = { contacts ->
                         val contactItems = contacts.mapToContactItem()
                         successOnGetAllContactsState(contactItems)
-                        savedStateHandle.set(ContactsKey, contactItems)
+                        savedStateHandle.set(CONTACTS_KEY, contactItems)
                     },
                     onFailure = {
                         errorState(R.string.error)
-                        savedStateHandle.set(ContactsKey, null)
+                        savedStateHandle.set(CONTACTS_KEY, null)
                     }
                 )
             }
