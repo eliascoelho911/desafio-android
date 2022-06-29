@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(project(":core:core"))
+    implementation(project(":designsystem"))
     implementation(Dependencies.Picasso.picasso)
     implementation(Dependencies.Koin.android)
     implementation(Dependencies.Google.gson)
