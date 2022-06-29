@@ -50,6 +50,8 @@ class ErrorView @JvmOverloads constructor(
         binding.message.text = message
     }
 
+    fun getMessage() = binding.message.text.toString()
+
     fun setIconTint(@ColorInt color: Int) {
         binding.icon.imageTintList = ColorStateList.valueOf(color)
     }
