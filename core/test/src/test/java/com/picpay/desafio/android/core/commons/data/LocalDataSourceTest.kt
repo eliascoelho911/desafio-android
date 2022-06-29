@@ -9,7 +9,7 @@ class LocalDataSourceTest : BaseTest() {
     private val localDataSource = spyk(LocalDataSource<String, String>())
 
     @Test
-    fun shouldDataExists_whenGet_shouldReturnData() {
+    fun givenDataExists_whenGet_shouldReturnData() {
         localDataSource.set(KEY, VALUE)
 
         val result = localDataSource.get(KEY)
@@ -18,14 +18,14 @@ class LocalDataSourceTest : BaseTest() {
     }
 
     @Test
-    fun shouldDataNotExists_whenGet_shouldReturnNull() {
+    fun givenDataNotExists_whenGet_shouldReturnNull() {
         val result = localDataSource.get(KEY)
 
         assertEquals(null, result)
     }
 
     @Test
-    fun shouldDataExists_whenRemove_shouldRemoveData() {
+    fun givenDataExists_whenRemove_shouldRemoveData() {
         localDataSource.set(KEY, VALUE)
         localDataSource.remove(KEY)
 
