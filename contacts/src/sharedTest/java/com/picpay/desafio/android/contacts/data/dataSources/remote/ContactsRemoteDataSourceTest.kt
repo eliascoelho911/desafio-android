@@ -36,7 +36,7 @@ class ContactsRemoteDataSourceTest: BaseTest() {
     }
 
     @Test
-    internal fun `should return allContacts`() = runBlocking {
+    fun shouldReturnAllContacts() = runBlocking {
         val result = dataSource.getAllContacts()
         val expected = ContactDTO(
             id = 1,
