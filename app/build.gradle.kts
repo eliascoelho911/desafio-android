@@ -16,7 +16,7 @@ android {
 dependencies {
     implementation(project(":designsystem"))
     implementation(project(":contacts"))
-    implementation(project(":core"))
+    implementation(project(":core:core"))
 
     implementation(Dependencies.Kotlin.kotlin)
     implementation(Dependencies.Android.appCompat)

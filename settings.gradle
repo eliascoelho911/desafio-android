@@ -1,4 +1,5 @@
 include ':app'
 include ':contacts'
 include ':designsystem'
-include ':core'
+include ':core:core'
+include ':core:test'

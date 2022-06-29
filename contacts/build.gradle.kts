@@ -9,7 +9,7 @@ android {
 
 dependencies {
     implementation(project(":designsystem"))
-    implementation(project(":core"))
+    implementation(project(":core:core"))
     implementation(Dependencies.Retrofit2.retrofit)
     implementation(Dependencies.Retrofit2.converterGson)
     implementation(Dependencies.Google.gson)
