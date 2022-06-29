@@ -2,7 +2,6 @@ package com.picpay.desafio.android.contacts.ui.contactsList
 
 import android.content.Context
 import android.view.View
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.SavedStateHandle
@@ -38,7 +37,6 @@ import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -47,7 +45,36 @@ import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 
 @RunWith(AndroidJUnit4::class)
-class ContactsListFragmentTest: BaseTest() {
+class ContactsListFragmentTest : BaseTest() {
+
+    private val context: Context by lazy { ApplicationProvider.getApplicationContext() }
+    private val savedStateHandle: SavedStateHandle = mockk(relaxed = true) {
+        every { this@mockk.get<List<ContactItemUiState>>(any()) } returns null
+    }
+    private val getAllContacts: GetAllContacts = mockk()
+    private val contactsListViewModel =
+        spyk(ContactsListViewModel(savedStateHandle, getAllContacts))
+    private val themeResId = com.picpay.desafio.android.designsystem.R.style.PicPayAppTheme
+
+    @Before
+    fun setup() {
+        setupKoin()
+    }
+
+    private fun setupKoin() {
+        loadKoinModules(listOf(CoreModule, ContactsModule))
+        val mockModule = module {
+            single { savedStateHandle }
+            single { getAllContacts }
+            viewModel { contactsListViewModel }
+        }
+        loadKoinModules(mockModule)
+    }
+
+    @After
+    fun tearDown() {
+        stopKoin()
+    }
 
     @Test
     fun givenSuccessOnGetContacts_shouldShowItems() {
@@ -130,7 +157,7 @@ class ContactsListFragmentTest: BaseTest() {
     private inline fun success(
         block: FragmentScenario<ContactsListFragment>.() -> Unit,
     ) {
-        coEvery { getAllContacts() } returns Result.success(contacts)
+        coEvery { getAllContacts() } returns Result.success(ContactsMock)
         val scenario = launchFragmentInContainer<ContactsListFragment>(themeResId = themeResId)
         scenario.block()
     }
@@ -162,34 +189,6 @@ class ContactsListFragmentTest: BaseTest() {
             )
         )
     }
-
-    @Before
-    fun setup() {
-        setupKoin()
-    }
-
-    private fun setupKoin() {
-        loadKoinModules(listOf(CoreModule, ContactsModule))
-        val mockModule = module {
-            single { savedStateHandle }
-            single { getAllContacts }
-            viewModel { contactsListViewModel }
-        }
-        loadKoinModules(mockModule)
-    }
-
-    @After
-    fun tearDown() {
-        stopKoin()
-    }
-
-    private val context: Context by lazy { ApplicationProvider.getApplicationContext() }
-    private val savedStateHandle: SavedStateHandle = mockk(relaxed = true) {
-        every { this@mockk.get<List<ContactItemUiState>>(any()) } returns null
-    }
-    private val getAllContacts: GetAllContacts = mockk()
-    private val contactsListViewModel =
-        spyk(ContactsListViewModel(savedStateHandle, getAllContacts))
-    private val contacts = listOf(Contact(id = 0, "imgUrl", "fullName", "username"))
-    private val themeResId = com.picpay.desafio.android.designsystem.R.style.PicPayAppTheme
 }
+
+private val ContactsMock = listOf(Contact(id = 0, "imgUrl", "fullName", "username"))

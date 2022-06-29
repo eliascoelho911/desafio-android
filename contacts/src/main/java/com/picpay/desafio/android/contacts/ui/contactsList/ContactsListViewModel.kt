@@ -13,14 +13,6 @@ import kotlinx.coroutines.launch
 
 private const val ContactsKey = "contacts"
 
-/**
- * Todo: Testar se refresh contacts inicia com loading
- * Todo: Testar se refresh contacts está buscando cache e enviando sucesso se encontra
- * Todo: Testar se refresh contacts está salvando cache quando chama getAllContacts e recebe sucesso
- * Todo: Testar se refresh contacts está deletando cache quando chama getAllContacts e recebe erro
- * Todo: Testar se refresh contacts está enviando erro quando recebe erro de getAllContacts
- * Todo: Testar se refresh contacts está chamando getAllContacts quando não tem cache
- */
 internal class ContactsListViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val getAllContacts: GetAllContacts,
