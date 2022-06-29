@@ -5,6 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.picpay.desafio.android.contacts.data.dtos.ContactDTO
+import com.picpay.desafio.android.core.test.BaseTest
 import com.picpay.desafio.android.core.test.errorResponse
 import com.picpay.desafio.android.core.test.readResourceAsText
 import kotlinx.coroutines.runBlocking
@@ -22,9 +23,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @RunWith(AndroidJUnit4::class)
-class ContactsRemoteDataSourceTest {
-    @get:Rule
-    val rule = InstantTaskExecutorRule()
+class ContactsRemoteDataSourceTest: BaseTest() {
 
     @Before
     fun setup() {

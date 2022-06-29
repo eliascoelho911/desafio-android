@@ -19,6 +19,7 @@ import com.picpay.desafio.android.contacts.di.ContactsModule
 import com.picpay.desafio.android.contacts.domain.entities.Contact
 import com.picpay.desafio.android.contacts.domain.usecase.GetAllContacts
 import com.picpay.desafio.android.core.di.CoreModule
+import com.picpay.desafio.android.core.test.BaseTest
 import com.picpay.desafio.android.core.test.espresso.AppBarLayoutMatchers
 import com.picpay.desafio.android.core.test.espresso.ErrorViewMatchers
 import com.picpay.desafio.android.core.test.espresso.RecyclerViewMatchers
@@ -46,10 +47,7 @@ import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 
 @RunWith(AndroidJUnit4::class)
-class ContactsListFragmentTest {
-
-    @get:Rule
-    val rule = InstantTaskExecutorRule()
+class ContactsListFragmentTest: BaseTest() {
 
     @Test
     fun givenSuccessOnGetContacts_shouldShowItems() {

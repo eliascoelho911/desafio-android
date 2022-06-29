@@ -1,19 +1,15 @@
 package com.picpay.desafio.android.contacts.domain.usecase
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.picpay.desafio.android.contacts.domain.entities.Contact
 import com.picpay.desafio.android.contacts.domain.repositories.ContactsRepository
+import com.picpay.desafio.android.core.test.BaseTest
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Rule
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class GetAllContactsTest {
-    @get:Rule
-    val rule = InstantTaskExecutorRule()
+class GetAllContactsTest : BaseTest() {
 
     @Test
     fun whenInvokeShouldReturnRepositoryData() = runBlocking {

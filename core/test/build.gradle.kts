@@ -15,6 +15,7 @@ dependencies {
     implementation(Dependencies.Google.gson)
     implementation(Dependencies.Android.appCompat)
     implementation(Dependencies.Android.material)
+    implementation(TestDependencies.Android.coreTesting)
     implementation(TestDependencies.Android.espressoCore)
     implementation(TestDependencies.OkHttp3.mockWebServer)
 }
