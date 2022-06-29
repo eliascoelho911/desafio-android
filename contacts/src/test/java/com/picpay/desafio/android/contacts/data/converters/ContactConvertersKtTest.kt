@@ -6,11 +6,13 @@ import com.picpay.desafio.android.core.test.BaseTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class ContactConvertersKtTest: BaseTest() {
+class ContactConvertersKtTest : BaseTest() {
     @Test
     fun testConvertContactDTOToEntity() {
-        val dto = ContactDTO(id = 0, imgUrl = "imgUrl", fullName = "fullName", username = "username")
-        val expected = Contact(id = 0, imgUrl = "imgUrl", fullName = "fullName", username = "username")
+        val dto =
+            ContactDTO(id = 0, imgUrl = "imgUrl", fullName = "fullName", username = "username")
+        val expected =
+            Contact(id = 0, imgUrl = "imgUrl", fullName = "fullName", username = "username")
 
         assertEquals(expected, dto.toEntity())
     }

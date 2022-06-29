@@ -10,7 +10,8 @@ object Dependencies {
     object Android {
         const val coreKtx = "androidx.core:core-ktx:${Versions.Android.coreKtx}"
         const val appCompat = "androidx.appcompat:appcompat:${Versions.Android.appCompat}"
-        const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.Android.recyclerView}"
+        const val recyclerView =
+            "androidx.recyclerview:recyclerview:${Versions.Android.recyclerView}"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Android.fragmentKtx}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Versions.Android.constraintLayout}"
@@ -21,7 +22,8 @@ object Dependencies {
             "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.lifecycle}"
         const val lifecycleRuntimeKtx =
             "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Android.lifecycle}"
-        const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.Android.navigation}"
+        const val navigation =
+            "androidx.navigation:navigation-fragment-ktx:${Versions.Android.navigation}"
     }
 
     object Facebook {
@@ -49,10 +51,12 @@ object Dependencies {
 
     object Picasso {
         const val picasso = "com.squareup.picasso:picasso:${Versions.Picasso.picasso}"
-        const val transformations = "jp.wasabeef:picasso-transformations:${Versions.Picasso.transformations}"
+        const val transformations =
+            "jp.wasabeef:picasso-transformations:${Versions.Picasso.transformations}"
     }
 
     object Hdodenhof {
-        const val circleImageView = "de.hdodenhof:circleimageview:${Versions.Hdodenhof.circleImageView}"
+        const val circleImageView =
+            "de.hdodenhof:circleimageview:${Versions.Hdodenhof.circleImageView}"
     }
 }

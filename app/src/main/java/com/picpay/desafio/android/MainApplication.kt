@@ -6,7 +6,7 @@ import com.picpay.desafio.android.core.di.CoreModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MainApplication: Application() {
+class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {

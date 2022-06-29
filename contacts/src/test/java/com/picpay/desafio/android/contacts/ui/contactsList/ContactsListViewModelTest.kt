@@ -34,7 +34,8 @@ class ContactsListViewModelTest : BaseTest() {
 
             viewModel.refreshContacts()
 
-            isSuccessState(state = viewModel.uiState.value, contacts = CONTACT_LIST_ITEM_UI_STATE_MOCK)
+            isSuccessState(state = viewModel.uiState.value,
+                contacts = CONTACT_LIST_ITEM_UI_STATE_MOCK)
             coVerify(exactly = 0) { getAllContacts() }
         }
 
@@ -46,7 +47,8 @@ class ContactsListViewModelTest : BaseTest() {
 
             viewModel.refreshContacts()
 
-            isSuccessState(state = viewModel.uiState.value, contacts = CONTACT_LIST_ITEM_UI_STATE_MOCK)
+            isSuccessState(state = viewModel.uiState.value,
+                contacts = CONTACT_LIST_ITEM_UI_STATE_MOCK)
             verify { savedStateHandle.set(CONTACTS_KEY, CONTACT_LIST_ITEM_UI_STATE_MOCK) }
         }
 

@@ -1,7 +1,8 @@
 object TestDependencies {
 
     object Kotlin {
-        const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Kotlin.coroutines}"
+        const val coroutinesTest =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Kotlin.coroutines}"
     }
 
     object JUnit {
@@ -14,7 +15,8 @@ object TestDependencies {
         const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Android.espresso}"
         const val junitExt = "androidx.test.ext:junit:${Versions.Android.junitExt}"
         const val coreKtx = "androidx.test:core-ktx:${Versions.Android.coreKtxTest}"
-        const val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.Android.fragmentTesting}"
+        const val fragmentTesting =
+            "androidx.fragment:fragment-testing:${Versions.Android.fragmentTesting}"
     }
 
     object Robolectric {

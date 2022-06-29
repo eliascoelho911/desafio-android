@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/spacing_16"/>
+                android:layout_marginHorizontal="@dimen/spacing_16" />
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

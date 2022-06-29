@@ -4,9 +4,8 @@ import android.app.Application
 import com.squareup.picasso.Picasso
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import org.koin.mp.KoinPlatformTools
 
-class TestApplication: Application() {
+class TestApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         runCatching {

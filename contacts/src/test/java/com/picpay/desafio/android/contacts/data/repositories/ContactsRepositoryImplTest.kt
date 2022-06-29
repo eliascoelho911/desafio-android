@@ -1,6 +1,5 @@
 package com.picpay.desafio.android.contacts.data.repositories
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.picpay.desafio.android.contacts.data.dataSources.local.ContactsListLocalDataSource
 import com.picpay.desafio.android.contacts.data.dataSources.remote.ContactsRemoteDataSource
 import com.picpay.desafio.android.contacts.data.dtos.ContactDTO
@@ -12,10 +11,9 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
-import org.junit.Rule
 import org.junit.Test
 
-class ContactsRepositoryImplTest: BaseTest() {
+class ContactsRepositoryImplTest : BaseTest() {
 
     @Test
     fun givenLocalDataSourceWithCache_whenGetAllContacts_shouldReturnCache() = runBlocking {

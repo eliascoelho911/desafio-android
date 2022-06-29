@@ -1,7 +1,6 @@
 package com.picpay.desafio.android.contacts.data.dataSources.remote
 
 import android.content.Context
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.picpay.desafio.android.contacts.data.dtos.ContactDTO
@@ -16,14 +15,13 @@ import okhttp3.mockwebserver.RecordedRequest
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @RunWith(AndroidJUnit4::class)
-class ContactsRemoteDataSourceTest: BaseTest() {
+class ContactsRemoteDataSourceTest : BaseTest() {
 
     @Before
     fun setup() {

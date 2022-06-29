@@ -5,7 +5,7 @@ import io.mockk.spyk
 import kotlin.test.assertEquals
 import org.junit.Test
 
-class LocalDataSourceTest: BaseTest() {
+class LocalDataSourceTest : BaseTest() {
     private val localDataSource = spyk(LocalDataSource<String, String>())
 
     @Test
