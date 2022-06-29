@@ -19,4 +19,6 @@ dependencies {
     implementation(TestDependencies.Android.espressoCore)
     implementation(TestDependencies.OkHttp3.mockWebServer)
     implementation(TestDependencies.Kotlin.coroutinesTest)
+
+    testDependencies()
 }
