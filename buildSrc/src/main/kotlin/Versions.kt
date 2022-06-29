@@ -7,7 +7,6 @@ object Versions {
 
     object Android {
         const val appCompat = "1.4.2"
-        const val coreKtx = "1.2.0"
         const val coreTesting = "2.1.0"
         const val constraintLayout = "1.1.3"
         const val material = "1.1.0"
@@ -17,7 +16,6 @@ object Versions {
         const val lifecycle = "2.4.0"
         const val coreKtxTest = "1.4.0"
         const val navigation = "2.4.2"
-        const val fragmentKtx = "1.4.1"
         const val recyclerView = "1.2.1"
         const val fragmentTesting = "1.4.1"
     }
@@ -37,10 +35,6 @@ object Versions {
     object Picasso {
         const val picasso = "2.8"
         const val transformations = "2.4.0"
-    }
-
-    object Hdodenhof {
-        const val circleImageView = "3.0.0"
     }
 
     object JUnit {

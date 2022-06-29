@@ -10,7 +10,6 @@ import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.google.android.material.appbar.AppBarLayout
 import com.picpay.desafio.android.core.commons.isCollapsed
-import com.picpay.desafio.android.core.commons.isExpanded
 import com.picpay.desafio.android.designsystem.components.ErrorView
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -28,18 +27,6 @@ object AppBarLayoutMatchers {
 
             override fun matchesSafely(item: AppBarLayout?): Boolean {
                 return item?.isCollapsed() ?: false
-            }
-        }
-    }
-
-    fun isExpanded(): BoundedMatcher<View, AppBarLayout> {
-        return object : BoundedMatcher<View, AppBarLayout>(AppBarLayout::class.java) {
-            override fun describeTo(description: Description?) {
-                description?.appendText("appBarLayout is expanded")
-            }
-
-            override fun matchesSafely(item: AppBarLayout?): Boolean {
-                return item?.isExpanded() ?: false
             }
         }
     }

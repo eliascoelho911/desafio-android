@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import com.picpay.desafio.android.designsystem.R
 import com.picpay.desafio.android.designsystem.databinding.ErrorViewBinding
 
+@Suppress("MemberVisibilityCanBePrivate")
 class ErrorView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

@@ -3,10 +3,7 @@ package com.picpay.desafio.android.designsystem.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
-import android.view.accessibility.AccessibilityEvent
 import android.widget.FrameLayout
-import androidx.core.view.ViewCompat
 import com.picpay.desafio.android.designsystem.R
 import com.picpay.desafio.android.designsystem.databinding.LoadingViewBinding
 

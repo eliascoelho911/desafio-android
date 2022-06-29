@@ -1,25 +1,15 @@
 object Dependencies {
     object Kotlin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Kotlin.kotlin}"
-        const val coroutinesCore =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Kotlin.coroutines}"
-        const val coroutinesAndroid =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Kotlin.coroutines}"
     }
 
     object Android {
-        const val coreKtx = "androidx.core:core-ktx:${Versions.Android.coreKtx}"
         const val appCompat = "androidx.appcompat:appcompat:${Versions.Android.appCompat}"
         const val recyclerView =
             "androidx.recyclerview:recyclerview:${Versions.Android.recyclerView}"
-        const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Android.fragmentKtx}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Versions.Android.constraintLayout}"
         const val material = "com.google.android.material:material:${Versions.Android.material}"
-        const val lifecycleViewModelKtx =
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Android.lifecycle}"
-        const val lifecycleLivedataKtx =
-            "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.lifecycle}"
         const val lifecycleRuntimeKtx =
             "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Android.lifecycle}"
         const val navigation =
@@ -55,8 +45,4 @@ object Dependencies {
             "jp.wasabeef:picasso-transformations:${Versions.Picasso.transformations}"
     }
 
-    object Hdodenhof {
-        const val circleImageView =
-            "de.hdodenhof:circleimageview:${Versions.Hdodenhof.circleImageView}"
-    }
 }
