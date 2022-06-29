@@ -82,6 +82,7 @@ internal class ContactsListFragment : Fragment() {
                 errorView.setMessage(getString(error.messageRes))
                 errorView.onClickTryAgain = error.onClickTryAgain
             }
+            contactsList.isVisible = uiState.contacts.isNotEmpty()
         }
         contactsListAdapter.submitList(uiState.contacts)
     }

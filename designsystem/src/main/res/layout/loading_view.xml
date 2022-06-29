@@ -9,13 +9,15 @@
             android:layout_height="@dimen/size_48"
             android:layout_gravity="center"
             app:shimmer_auto_start="true"
-            app:shimmer_duration="1000">
+            app:shimmer_duration="1000"
+            android:importantForAccessibility="no">
 
         <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_picpay_logo"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:importantForAccessibility="no"/>
 
     </com.picpay.desafio.android.designsystem.components.ShimmerFrameLayout>
 </merge>

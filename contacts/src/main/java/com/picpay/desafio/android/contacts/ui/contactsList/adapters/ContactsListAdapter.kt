@@ -32,17 +32,26 @@ internal class ContactViewHolder(private val binding: ListItemUserBinding) :
             fullName.text = item.fullName
             username.text = binding.root.context.getString(R.string.username, item.username)
             bindPicture(item)
+            setupAccessibility(item)
         }
     }
 
-    private fun ListItemUserBinding.bindPicture(item: ContactItemUiState) {
+    private fun setupAccessibility(item: ContactItemUiState) {
+        binding.root.contentDescription = binding.root.context.getString(
+            R.string.contacts_list_item_accessibility,
+            item.username,
+            item.fullName
+        )
+    }
+
+    private fun bindPicture(item: ContactItemUiState) {
         Picasso.get()
             .load(item.imgUrl)
             .fit()
             .centerCrop()
             .placeholder(R.drawable.ic_round_account_circle)
             .transform(CropCircleTransformation())
-            .into(picture)
+            .into(binding.picture)
     }
 }
 

@@ -81,6 +81,7 @@ class ContactsListFragmentTest : BaseTest() {
         success {
             checkView(withId = R.id.loading_view, matcher = not(isDisplayed()))
             checkView(withId = R.id.error_view, matcher = not(isDisplayed()))
+            checkView(withId = R.id.contacts_list, matcher = isDisplayed())
             checkFirstItemOnContactList(matcher = allOf(withText("fullName"), isDisplayed()))
             checkFirstItemOnContactList(matcher = allOf(withText("@username"), isDisplayed()))
         }
@@ -113,6 +114,7 @@ class ContactsListFragmentTest : BaseTest() {
         error {
             checkView(withId = R.id.loading_view, matcher = not(isDisplayed()))
             checkView(withId = R.id.error_view, matcher = isDisplayed())
+            checkView(withId = R.id.contacts_list, matcher = not(isDisplayed()))
             checkView(
                 withId = R.id.error_view,
                 matcher = ErrorViewMatchers.withMessage(context.getString(R.string.error))
@@ -138,6 +140,7 @@ class ContactsListFragmentTest : BaseTest() {
         loading {
             checkView(withId = R.id.loading_view, matcher = isDisplayed())
             checkView(withId = R.id.error_view, matcher = not(isDisplayed()))
+            checkView(withId = R.id.contacts_list, matcher = not(isDisplayed()))
         }
     }
 
