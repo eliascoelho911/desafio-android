@@ -6,3 +6,14 @@ plugins {
 android {
     moduleSetup()
 }
+
+dependencies {
+    implementation(project(":core:core"))
+    implementation(Dependencies.Picasso.picasso)
+    implementation(Dependencies.Koin.android)
+    implementation(Dependencies.Google.gson)
+    implementation(Dependencies.Android.appCompat)
+    implementation(Dependencies.Android.material)
+    implementation(TestDependencies.Android.espressoCore)
+    implementation(TestDependencies.OkHttp3.mockWebServer)
+}

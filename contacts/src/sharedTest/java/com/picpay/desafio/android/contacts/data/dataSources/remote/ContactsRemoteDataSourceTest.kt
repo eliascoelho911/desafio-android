@@ -5,8 +5,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.picpay.desafio.android.contacts.data.dtos.ContactDTO
-import com.picpay.desafio.android.contacts.errorResponse
-import com.picpay.desafio.android.contacts.readFileAsText
+import com.picpay.desafio.android.core.test.errorResponse
+import com.picpay.desafio.android.core.test.readResourceAsText
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
@@ -54,7 +54,7 @@ class ContactsRemoteDataSourceTest {
     }
 
     private val successResponse by lazy {
-        MockResponse().setResponseCode(200).setBody(readFileAsText(context, "contacts.json"))
+        MockResponse().setResponseCode(200).setBody(readResourceAsText(context, "contacts.json"))
     }
 
     private val serverPort = 8080

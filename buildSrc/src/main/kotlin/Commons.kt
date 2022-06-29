@@ -105,6 +105,7 @@ fun DependencyHandlerScope.testDependencies() {
     "testImplementation"(TestDependencies.MockK.mockK)
     "testImplementation"(TestDependencies.Koin.koinTest)
     "testImplementation"(TestDependencies.Koin.koinTestJunit4)
+    "testImplementation"(project(":core:test"))
     "debugImplementation"(TestDependencies.Android.fragmentTesting)
     "androidTestImplementation"(TestDependencies.OkHttp3.mockWebServer)
     "androidTestImplementation"(TestDependencies.Android.espressoCore)
@@ -114,4 +115,5 @@ fun DependencyHandlerScope.testDependencies() {
     "androidTestImplementation"(TestDependencies.Android.coreTesting)
     "androidTestImplementation"(TestDependencies.MockK.android)
     "androidTestImplementation"(TestDependencies.Robolectric.annotations)
+    "androidTestImplementation"(project(":core:test"))
 }

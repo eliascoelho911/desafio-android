@@ -1,20 +1,22 @@
-package com.picpay.desafio.android.contacts
+package com.picpay.desafio.android.core.test
 
 import android.app.Application
 import com.squareup.picasso.Picasso
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import org.koin.mp.KoinPlatformTools
 
-//Todo: Mover para core
 class TestApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         runCatching {
             Picasso.setSingletonInstance(Picasso.Builder(this).build())
         }
-        startKoin {
-            androidContext(this@TestApplication)
-            allowOverride(true)
+        runCatching {
+            startKoin {
+                androidContext(this@TestApplication)
+                allowOverride(true)
+            }
         }
     }
 }
